@@ -15,11 +15,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
-@RequiredArgsConstructor
+@RequiredArgsConstructor                       // will inject objects in to properties with private final signature.
 public class ApplicationConfig {
 
-    private final UserRepository userRepository;
+    private final UserRepository userRepository;        //
 
+    // Objects will be created for methods with Bean annotation and stored in the spring container.
     @Bean
     public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider(userDetailsService());
